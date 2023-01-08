@@ -5,6 +5,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\VendorController;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\DeliveryController;
+
 
 
 /*
@@ -41,4 +43,12 @@ Route::post('customer/add', [CustomerController::class, 'store']);
 Route::post('customer/{id}/update', [CustomerController::class, 'update']);
 Route::post('customer/{id}/delete', [CustomerController::class, 'destroy']);
 Route::get('customer/showData', [CustomerController::class, 'showData']);
+
+//delivery
+Route::post('delivery/add', [DeliveryController::class, 'store']);
+Route::post('delivery/{id}/update', [DeliveryController::class, 'update']);
+Route::post('delivery/{id}/delete', [DeliveryController::class, 'destroy']);
+Route::get('delivery/showData', [DeliveryController::class, 'showData']);
+Route::get('delivery/getCustomer', [DeliveryController::class, 'getCustomer']);
+Route::get('delivery/getVendor', [DeliveryController::class, 'getVendor']);
 

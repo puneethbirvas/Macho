@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->string('vendorCode');
             $table->string('gstNumber')->unique();
-            $table->string('companyName');
+            $table->string('vendorName');
             $table->string('billingAddress');
             $table->string('shippingAddress');
             $table->string('contactPersonName')->unique();

@@ -11,7 +11,7 @@ class Vendor extends Model
     protected $fillable = [
         "vendorCode",
         "gstNumber",
-        "companyName",
+        "vendorName",
         "billingAddress",
         "shippingAddress",
         "contactPersonName",

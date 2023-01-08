@@ -62,7 +62,7 @@ class UserController extends Controller
             
             $users->userRole= $request->userRole;
             $users->employeeId= $request->employeeId;
-            $users->emailId= $request->emailId;
+            $users->email= $request->email;
             $users->phone= $request->phone;
             $users->fullName= $request->fullName;
             $users->password= $request->password;

@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Customer;
 use Illuminate\Http\Request;
 use DB;
+use Exception;
+use Illuminate\Database\QueryException;
 
 class CustomerController extends Controller
 {

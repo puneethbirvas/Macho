@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Vendor;
 use Illuminate\Http\Request;
 use DB;
+use Exception;
+use Illuminate\Database\QueryException;
 
 class VendorController extends Controller
 {
@@ -14,7 +16,7 @@ class VendorController extends Controller
             $Vendor = new Vendor;
             $Vendor->vendorCode = $request->vendorCode;
             $Vendor->gstNumber= $request->gstNumber;
-            $Vendor->companyName= $request->companyName;
+            $Vendor->vendorName= $request->vendorName;
             $Vendor->billingAddress= $request->billingAddress;
             $Vendor->shippingAddress= $request->shippingAddress;
             $Vendor->contactPersonName= $request->contactPersonName;
@@ -61,7 +63,7 @@ class VendorController extends Controller
 
             $Vendor->vendorCode= $request->vendorCode;
             $Vendor->gstNumber= $request->gstNumber;
-            $Vendor->companyName= $request->companyName;
+            $Vendor->vendorName= $request->vendorName;
             $Vendor->billingAddress= $request->billingAddress;
             $Vendor->shippingAddress= $request->shippingAddress;
             $Vendor->contactPersonName= $request->contactPersonName;
