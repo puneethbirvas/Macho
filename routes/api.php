@@ -6,7 +6,8 @@ use App\Http\Controllers\VendorController;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\DeliveryController;
-
+use App\Http\Controllers\PartsController;
+use App\Http\Controllers\SalesController;
 
 
 /*
@@ -52,3 +53,14 @@ Route::get('delivery/showData', [DeliveryController::class, 'showData']);
 Route::get('delivery/getCustomer', [DeliveryController::class, 'getCustomer']);
 Route::get('delivery/getVendor', [DeliveryController::class, 'getVendor']);
 
+//parts
+Route::post('part/add', [PartsController::class, 'store']);
+Route::post('part/{id}/update', [PartsController::class, 'update']);
+Route::post('part/{id}/delete', [PartsController::class, 'destroy']);
+Route::get('part/showData', [PartsController::class, 'showData']);
+
+//sales
+Route::post('sales/add', [SalesController::class, 'store']);
+Route::post('sales/{id}/update', [SalesController::class, 'update']);
+Route::post('sales/{id}/delete', [SalesController::class, 'destroy']);
+Route::get('sales/showData', [SalesController::class, 'showData']);
