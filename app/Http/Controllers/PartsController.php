@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\Parts;
 use Illuminate\Http\Request;
+use DB;
+use Exception;
+use Illuminate\Database\QueryException;
 
 class PartsController extends Controller
 {

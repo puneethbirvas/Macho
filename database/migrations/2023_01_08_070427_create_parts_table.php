@@ -15,8 +15,8 @@ return new class extends Migration
     {
         Schema::create('parts', function (Blueprint $table) {
             $table->id();
-            $table->string('customerName');
-            $table->string('partId');
+            $table->bigInteger('customerName')->unsigned();
+            $table->foreign('customerName')->references('id')->on('customers')->onDelete('cascade');            $table->string('partId');
             $table->string('partName');
             $table->string('partDescription');
             $table->string('file');

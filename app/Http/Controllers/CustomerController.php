@@ -42,7 +42,7 @@ class CustomerController extends Controller
 
         }catch(QueryException $e){
             $response = [
-                "error" => $e->errorInfo,
+                "message" => $e->errorInfo,
                 "status" => 406
             ];
             $status = 406;             
@@ -88,7 +88,7 @@ class CustomerController extends Controller
                $status = 200;
             }catch(QueryException $e){
                $response = [
-                   "error" => $e->errorInfo,
+                   "message" => $e->errorInfo,
                    "status" => 406
                 ];
                $status = 406; 
@@ -122,7 +122,7 @@ class CustomerController extends Controller
 
         }catch(QueryException $e){
             $response = [
-                "error" => $e->errorInfo,
+                "message" => $e->errorInfo,
                 "status" => 406
             ];
             $status = 406; 
@@ -155,7 +155,7 @@ class CustomerController extends Controller
 
         }catch(QueryException $e){
             $response = [
-              "error" => $e->errorInfo,
+              "message" => $e->errorInfo,
               "status" => 406
             ];
             $status = 406; 

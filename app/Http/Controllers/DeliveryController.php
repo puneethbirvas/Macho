@@ -51,7 +51,7 @@ class DeliveryController extends Controller
 
         }catch(QueryException $e){
             $response = [
-                "error" => $e->errorInfo,
+                "message" => $e->errorInfo,
                 "status" => 406
             ];
             $status = 406;             
@@ -104,7 +104,7 @@ class DeliveryController extends Controller
                $status = 200;
             }catch(QueryException $e){
                $response = [
-                   "error" => $e->errorInfo,
+                   "message" => $e->errorInfo,
                    "status" => 406
                 ];
                $status = 406; 
@@ -138,7 +138,7 @@ class DeliveryController extends Controller
 
         }catch(QueryException $e){
             $response = [
-                "error" => $e->errorInfo,
+                "message" => $e->errorInfo,
                 "status" => 406
             ];
             $status = 406; 
@@ -171,7 +171,7 @@ class DeliveryController extends Controller
 
         }catch(QueryException $e){
             $response = [
-              "error" => $e->errorInfo,
+              "message" => $e->errorInfo,
               "status" => 406
             ];
             $status = 406; 
@@ -198,14 +198,14 @@ class DeliveryController extends Controller
 
         }catch(Exception $e){
             $response = [
-                "error"=>$e->getMessage(),
+                "message"=>$e->getMessage(),
                 "status"=>406
             ];            
             $status = 406;
 
         }catch(QueryException $e){
             $response = [
-                "error" => $e->errorInfo,
+                "message" => $e->errorInfo,
                 "status"=>406
             ];
             $status = 406; 
@@ -233,14 +233,14 @@ class DeliveryController extends Controller
 
         }catch(Exception $e){
             $response = [
-                "error"=>$e->getMessage(),
+                "message"=>$e->getMessage(),
                 "status"=>406
             ];            
             $status = 406;
 
         }catch(QueryException $e){
             $response = [
-                "error" => $e->errorInfo,
+                "message" => $e->errorInfo,
                 "status"=>406
             ];
             $status = 406; 
