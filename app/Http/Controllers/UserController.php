@@ -41,7 +41,7 @@ class UserController extends Controller
 
         }catch(QueryException $e){
             $response = [
-                "error" => $e->errorInfo,
+                "message" => $e->errorInfo,
                 "status" => 406
             ];
             $status = 406;             
@@ -85,7 +85,7 @@ class UserController extends Controller
                
             }catch(QueryException $e){
                $response = [
-                   "error" => $e->errorInfo,
+                   "message" => $e->errorInfo,
                    "status" => 406
                ];
                $status = 406; 
@@ -119,7 +119,7 @@ class UserController extends Controller
 
         }catch(QueryException $e){
             $response = [
-                "error" => $e->errorInfo,
+                "message" => $e->errorInfo,
                 "status" => 406
             ];
             $status = 406; 
@@ -216,5 +216,36 @@ class UserController extends Controller
         return response($response, $status);
     }
 
+    public function showData()
+    {
+        try{
+            $user = User::all();
+
+            if(!$user){
+                throw new Exception("Data not found");
+            }else{   
+                $response = [
+                    'data' => $user,
+                ];
+                $status = 201;   
+            }
+
+        }catch(Exception $e){
+            $response = [
+                "error"=>$e->getMessage(),
+                "status"=>406
+            ];            
+            $status = 406;
+
+        }catch(QueryException $e){
+            $response = [
+                "error" => $e->errorInfo,
+                "status"=>406
+            ];
+            $status = 406; 
+        }
+        
+        return response($response, $status);    
+    }
  
 }

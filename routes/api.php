@@ -4,6 +4,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\VendorController;
 use App\Http\Controllers\CustomerController;
+use App\Http\Controllers\GetDataController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\DeliveryController;
 use App\Http\Controllers\PartsController;
@@ -50,8 +51,6 @@ Route::post('delivery/add', [DeliveryController::class, 'store']);
 Route::post('delivery/{id}/update', [DeliveryController::class, 'update']);
 Route::post('delivery/{id}/delete', [DeliveryController::class, 'destroy']);
 Route::get('delivery/showData', [DeliveryController::class, 'showData']);
-Route::get('delivery/getCustomer', [DeliveryController::class, 'getCustomer']);
-Route::get('delivery/getVendor', [DeliveryController::class, 'getVendor']);
 
 //parts
 Route::post('part/add', [PartsController::class, 'store']);
@@ -64,3 +63,7 @@ Route::post('sales/add', [SalesController::class, 'store']);
 Route::post('sales/{id}/update', [SalesController::class, 'update']);
 Route::post('sales/{id}/delete', [SalesController::class, 'destroy']);
 Route::get('sales/showData', [SalesController::class, 'showData']);
+
+//GetData
+Route::get('getCustomer', [GetDataController::class, 'getCustomer']);
+Route::get('getVendor', [GetDataController::class, 'getVendor']);
