@@ -2,83 +2,80 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Customer;
+use App\Models\Parts;
 use Illuminate\Http\Request;
-use DB;
-use Exception;
-use Illuminate\Database\QueryException;
 
-class CustomerController extends Controller
+class PartsController extends Controller
 {
     public function store(Request $request)
     {
         try{
-            $customer = new Customer;
-            $customer->customerCode = $request->customerCode;
-            $customer->gstNumber= $request->gstNumber;
-            $customer->customerName= $request->customerName;
-            $customer->billingAddress= $request->billingAddress;
-            $customer->shippingAddress= $request->shippingAddress;
-            $customer->contactPersonName= $request->contactPersonName;
-            $customer->primaryContactNumber= $request->primaryContactNumber;
-            $customer->secondaryContactNumber= $request->secondaryContactNumber;
-            $customer->email= $request->email;
-            $customer->remark= $request->remark;
+            $part = new Parts;
 
-            $customer->save();
-            
+            $part->customerName = $request->customerName;
+            $part->partId = $request->partId;
+            $part->partName = $request->partName;
+            $part->partDescription = $request->partDescription;
+            $part->file = $request->file;
+            $part->sdCode= $request->sdCode;
+            $part->units = $request->units;
+            $part->bundleQty = $request->bundleQty;
+            $part->threshold = $request->threshold;
+
+            $part->save();
             $response = [
-                "message" => "Customer DataAdded Sucessfully!",
+                "message" => "details Added Sucessfully!",
                 "status" => 200
             ];
-            $status = 200;  
+            $status = 200;          
+
 
         }catch(Exception $e){
             $response = [
                 "message"=>$e->getMessage(),
                 "status" => 406
             ];            
-            $status = 406;    
+            $status = 406;         
 
         }catch(QueryException $e){
             $response = [
-                "error" => $e->errorInfo,
+                "message" => $e->errorInfo,
                 "status" => 406
             ];
             $status = 406;             
         }
 
         return response($response,$status);
-    } 
+    }
 
 
     public function update(Request $request,$id)
     {
         try{
-            $customer = Customer::find($id);
+            $part = Parts::find($id);
 
-            if(!$customer){
-                throw new Exception("customer Data Not found");
+            if(!$part){
+                throw new Exception("part Data Not found");
             }
 
-            $customer->customerCode= $request->customerCode;
-            $customer->gstNumber= $request->gstNumber;
-            $customer->customerName= $request->customerName;
-            $customer->billingAddress= $request->billingAddress;
-            $customer->shippingAddress= $request->shippingAddress;
-            $customer->contactPersonName= $request->contactPersonName;
-            $customer->primaryContactNumber= $request->primaryContactNumber;
-            $customer->secondaryContactNumber= $request->secondaryContactNumber;
-            $customer->email= $request->email;
-            $customer->remark= $request->remark;
+            $part->customerName = $request->customerName;
+            $part->partId = $request->partId;
+            $part->partName = $request->partName;
+            $part->partDescription = $request->partDescription;
+            $part->file = $request->file;
+            $part->sdCode= $request->sdCode;
+            $part->units = $request->units;
+            $part->bundleQty = $request->bundleQty;
+            $part->threshold = $request->threshold;
 
-            $customer->save();
+            $part->save();
 
             $response = [       
-               "message" =>' customer Data Updated Successfully', 
+               "message" =>'details Updated Successfully', 
                "status" => 200
             ];
             $status = 200;  
+
 
             }catch(Exception $e){ 
                $response = [
@@ -86,9 +83,10 @@ class CustomerController extends Controller
                    "status" => 406
                 ];            
                $status = 200;
+
             }catch(QueryException $e){
                $response = [
-                   "error" => $e->errorInfo,
+                   "message" => $e->errorInfo,
                    "status" => 406
                 ];
                $status = 406; 
@@ -101,13 +99,15 @@ class CustomerController extends Controller
     public function destroy($id)
     { 
         try{
-            $customer = Customer::find($id);
-            if(!$customer){
-                throw new Exception("customer not found");
+            $part = Parts::find($id);
+
+            if(!$part){
+                throw new Exception("part not found");
+
             }else{
-                $customer->delete();
+                $part->delete();
                 $response = [          
-                    "message" => " customer Data Deleted Sucessfully!",
+                    "message" => "Parts Deleted Sucessfully!",
                     "status" => 200
                 ];
                 $status = 200;     
@@ -122,7 +122,7 @@ class CustomerController extends Controller
 
         }catch(QueryException $e){
             $response = [
-                "error" => $e->errorInfo,
+                "message" => $e->errorInfo,
                 "status" => 406
             ];
             $status = 406; 
@@ -131,17 +131,17 @@ class CustomerController extends Controller
         return response($response,$status);
     } 
 
+
     public function showData()
     {
         try{    
-
-            $result = DB::table('customers')->get();
-            if(!$result){
+            $part = DB::table('parts')->get();
+            if(!$part){
                 throw new Exception("customer not found");
             }
             $response=[
               "message" => "customer List",
-              "data" => $result
+              "data" => $part
 
             ];
             $status = 200; 
@@ -155,11 +155,12 @@ class CustomerController extends Controller
 
         }catch(QueryException $e){
             $response = [
-              "error" => $e->errorInfo,
+              "message" => $e->errorInfo,
               "status" => 406
             ];
             $status = 406; 
         }
+
         return response($response,$status); 
     }
 }
